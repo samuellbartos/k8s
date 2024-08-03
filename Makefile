@@ -1,4 +1,4 @@
 .PHONY: version
 
 version:
-	@cat VERSION
+	@cat myapp/Chart.yaml | yq 'version'
