@@ -1,0 +1,18 @@
+name: merge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: login
+      run:
+        echo "login"
+    - name: push
+      run:
+        echo "build and push image tagged with commit SHA"
