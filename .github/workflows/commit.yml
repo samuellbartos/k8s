@@ -25,3 +25,13 @@ jobs:
         VF="^[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?$"  # regexp to check correct version format
         if ! [[ "$V" =~ $VF ]]; then echo "Invalid version format"; exit 1; fi
         git tag "$V"
+  push:
+    needs: tag
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: push
+      run: |
+        V=$(make version).${{ github.sha }}
+        echo "helm package --version $V myapp"
+        echo "help push myapp"
