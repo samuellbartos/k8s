@@ -17,3 +17,12 @@ jobs:
         V=$(make version)
         git tag "$V"
         git push origin "$V"
+  push:
+    needs: tag
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: push
+      run: |
+        echo "helm package myapp"
+        echo "help push myapp"
