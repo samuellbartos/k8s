@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: helm-check
+    - name: validate
       run: echo "validate helm charts"
   tag:
     runs-on: ubuntu-latest
